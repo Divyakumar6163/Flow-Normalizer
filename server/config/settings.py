@@ -30,7 +30,19 @@ SECRET_KEY = 'django-insecure-)zz^azvfm(5bhe-wzc2-4^wwa(igu83agrs#!^b7o9qz^jh0wx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "*"
+]
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000",
+    "https://flow-normalizer.vercel.app",
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:3000",
+    "https://flow-normalizer.vercel.app",
+]
 
 
 # Application definition
