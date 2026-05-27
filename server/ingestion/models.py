@@ -26,6 +26,7 @@ class ImportBatch(models.Model):
 
 
 class NormalizedRecord(models.Model):
+
     batch = models.ForeignKey(
         ImportBatch,
         on_delete=models.CASCADE
@@ -37,6 +38,12 @@ class NormalizedRecord(models.Model):
 
     activity_type = models.CharField(
         max_length=255
+    )
+
+    activity_details = models.CharField(
+        max_length=255,
+        blank=True,
+        null=True
     )
 
     quantity = models.FloatField()

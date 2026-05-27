@@ -4,6 +4,10 @@ def normalize_sap(row):
             row.get("fuel_type")
             or "Unknown Fuel",
 
+        "activity_details":
+            f"{row.get('plant_code', '')} / "
+            f"{row.get('vendor', '')}",
+
         "quantity":
             float(
                 row.get("quantity", 0)
@@ -25,11 +29,20 @@ def normalize_utility(row):
         "activity_type":
             "Electricity",
 
+        "activity_details":
+            f"{row.get('facility_name', '')} / "
+            f"{row.get('vendor', '')}",
+
         "quantity":
             float(
-                row.get("usage_kwh", 0)
+                row.get(
+                    "usage_kwh",
+                    0
+                )
             )
-            if row.get("usage_kwh")
+            if row.get(
+                "usage_kwh"
+            )
             else 0,
 
         "unit":
@@ -48,7 +61,9 @@ def normalize_travel(row):
     }
 
     origin = (
-        row.get("origin_airport")
+        row.get(
+            "origin_airport"
+        )
         or ""
     )
 
@@ -73,6 +88,9 @@ def normalize_travel(row):
     return {
         "activity_type":
             "Flight",
+
+        "activity_details":
+            route,
 
         "quantity":
             distance,

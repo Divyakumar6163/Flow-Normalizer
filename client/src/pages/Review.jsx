@@ -70,7 +70,7 @@ const ReviewPage = () => {
 
   useEffect(() => {
     fetchRecords();
-  }, []);
+  }, []); // eslint-disable-line
 
   const approveRecord = async (id) => {
     try {
@@ -171,7 +171,11 @@ const ReviewPage = () => {
 
                   <th className="p-5 text-left">Activity</th>
 
+                  <th className="p-5 text-left">Details</th>
+
                   <th className="p-5 text-left">Quantity</th>
+
+                  <th className="p-5 text-left">Unit</th>
 
                   <th className="p-5 text-left">Scope</th>
 
@@ -188,13 +192,15 @@ const ReviewPage = () => {
                   <tr key={row.id} className="border-t">
                     <td className="p-5">{row.source}</td>
 
-                    <td className="p-5">{row.activity_type}</td>
+                    <td>{row.activity_type}</td>
 
-                    <td className="p-5">
-                      {row.quantity} {row.unit}
-                    </td>
+                    <td>{row.activity_details}</td>
 
-                    <td className="p-5">{row.scope}</td>
+                    <td>{row.quantity}</td>
+
+                    <td>{row.unit}</td>
+
+                    <td>{row.scope}</td>
 
                     <td className="p-5">
                       <StatusBadge status={row.status} />

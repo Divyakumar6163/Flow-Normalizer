@@ -324,3 +324,26 @@ class FinalAuditView(APIView):
             "message":
             "Audit completed"
         })
+    
+class UploadsView(APIView):
+
+    def get(
+        self,
+        request
+    ):
+        records = (
+            NormalizedRecord.objects
+            .all()
+            .order_by("-id")
+        )
+
+        serializer = (
+            RecordSerializer(
+                records,
+                many=True
+            )
+        )
+
+        return Response(
+            serializer.data
+        )

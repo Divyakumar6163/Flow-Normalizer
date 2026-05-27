@@ -5,6 +5,7 @@ from .views import (
     RecordActionView,
     UploadCSVView,
     ReviewView,
+    UploadsView
 )
 
 urlpatterns = [
@@ -26,5 +27,9 @@ urlpatterns = [
     path(
         "audit/<int:batch_id>/",
         FinalAuditView.as_view()
+    ),
+    path(
+        "uploads/",
+        UploadsView.as_view()
     ),
 ]
