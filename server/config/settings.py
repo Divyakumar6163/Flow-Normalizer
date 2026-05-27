@@ -37,15 +37,14 @@ ALLOWED_HOSTS = [
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "https://flow-normalizer.vercel.app",
+    "https://flow-normalizer.onrender.com",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
     "http://localhost:3000",
     "https://flow-normalizer.vercel.app",
+    "https://flow-normalizer.onrender.com",
 ]
-
-
-# Application definition
 
 INSTALLED_APPS = [
     "django.contrib.admin",
