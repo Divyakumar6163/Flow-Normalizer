@@ -23,20 +23,31 @@ const SourceCard = ({ title, description, icon, source }) => {
     formData.append("file", file);
 
     try {
-      // use configured API instance
-      const response = await api.post(`/upload/${source}/`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await api.post(`/upload/${source}/`, formData);
 
       console.log("UPLOAD RESPONSE:", response.data);
 
-      navigate(`/review/${response.data.batchId}`);
+      // stop if backend failed
+      if (response.data.error) {
+        alert(response.data.error);
+        return;
+      }
+
+      const batchId =
+        response.data.batch_id || response.data.batchId || response.data.id;
+
+      if (!batchId) {
+        console.error("Missing batch id", response.data);
+
+        alert("Upload completed but no batch ID returned.");
+        return;
+      }
+
+      navigate(`/review/${batchId}`);
     } catch (err) {
       console.error(err);
 
-      setError(err?.response?.data?.error || "Upload failed");
+      alert(err.response?.data?.error || "Upload failed");
     } finally {
       setLoading(false);
     }

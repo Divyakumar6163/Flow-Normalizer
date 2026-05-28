@@ -27,23 +27,20 @@ from .serializers import (
 
 
 class UploadCSVView(APIView):
-    def post(
-        self,
-        request,
-        source
-    ):
+
+    def post(self, request, source):
         file = request.FILES.get("file")
 
         if not file:
-            return Response({
-                "error": "No file"
-            })
+            return Response(
+                {"error": "No file"},
+                status=400
+            )
 
         batch = ImportBatch.objects.create(
             source=source,
             file_name=file.name
         )
-
 
         try:
             csv_file = TextIOWrapper(
@@ -51,38 +48,17 @@ class UploadCSVView(APIView):
                 encoding="utf-8-sig"
             )
 
-            # read raw
+            # safer CSV parsing
             df = pd.read_csv(
                 csv_file,
-                header=None
+                low_memory=False
             )
 
-            # if everything loaded into one column
-            if len(df.columns) == 1:
-
-                rows = (
-                    df[0]
-                    .astype(str)
-                    .str.split(",", expand=True)
-                )
-
-                # first row becomes header
-                rows.columns = (
-                    rows.iloc[0]
-                    .str.strip()
-                    .str.lower()
-                )
-
-                df = rows[1:].reset_index(
-                    drop=True
-                )
-
-            else:
-                df.columns = (
-                    df.columns
-                    .str.strip()
-                    .str.lower()
-                )
+            # safe headers
+            df.columns = [
+                str(col).strip().lower()
+                for col in df.columns
+            ]
 
             print("COLUMNS:")
             print(df.columns.tolist())
@@ -93,62 +69,40 @@ class UploadCSVView(APIView):
             )
 
         except Exception as e:
-            return Response({
-                "error":
+            return Response(
+                {
+                    "error":
                     f"CSV parsing failed: {str(e)}"
-            })
+                },
+                status=400
+            )
 
-        for _, row in df.iterrows():
+        try:
+            if source == "sap":
+                normalize_sap(df, batch)
 
-            # row -> dict
-            row = row.to_dict()
+            elif source == "utility":
+                normalize_utility(df, batch)
 
-            print("ROW:", row)
+            elif source == "travel":
+                normalize_travel(df, batch)
 
-            try:
-                if source == "sap":
-                    status, issue = (
-                        validate_sap(row)
-                    )
-
-                    normalized = (
-                        normalize_sap(row)
-                    )
-
-                elif source == "utility":
-                    status, issue = (
-                        validate_utility(row)
-                    )
-
-                    normalized = (
-                        normalize_utility(row)
-                    )
-
-                elif source == "travel":
-                    status, issue = (
-                        validate_travel(row)
-                    )
-
-                    normalized = (
-                        normalize_travel(row)
-                    )
-
-                else:
-                    continue
-
-                NormalizedRecord.objects.create(
-                    batch=batch,
-                    source=source,
-                    status=status,
-                    issue=issue,
-                    **normalized
+            else:
+                return Response(
+                    {"error": "Invalid source"},
+                    status=400
                 )
 
-            except Exception as e:
-                print(
-                    f"Row failed: {row}"
-                )
-                print(e)
+        except Exception as e:
+            print(e)
+
+            return Response(
+                {
+                    "error":
+                    f"Normalization failed: {str(e)}"
+                },
+                status=400
+            )
 
         return Response({
             "batchId": batch.id

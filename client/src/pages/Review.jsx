@@ -60,17 +60,23 @@ const StatusBadge = ({ status }) => {
 const ReviewPage = () => {
   const { batchId } = useParams();
 
+  useEffect(() => {
+    if (!batchId) return;
+
+    fetchRecords();
+  }, [batchId]); // eslint-disable-line
+
   const [records, setRecords] = useState([]);
 
   const fetchRecords = async () => {
+    if (!batchId) {
+      console.error("Missing batchId");
+      return;
+    }
     const res = await api.get(`/review/${batchId}/`);
 
     setRecords(res.data);
   };
-
-  useEffect(() => {
-    fetchRecords();
-  }, []); // eslint-disable-line
 
   const approveRecord = async (id) => {
     try {

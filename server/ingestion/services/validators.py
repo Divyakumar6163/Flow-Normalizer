@@ -46,15 +46,56 @@ def validate_utility(row):
     return "valid", ""
 
 
-def validate_travel(row):
-    destination = row.get(
-        "destination_airport"
-    )
+from constants.airports import (
+    airport_distance
+)
 
-    if not destination:
+
+def validate_travel(row):
+
+    origin = str(
+        row.get(
+            "origin_airport", ""
+        ) or ""
+    ).strip()
+
+    destination = str(
+        row.get(
+            "destination_airport", ""
+        ) or ""
+    ).strip()
+
+    if origin == "0":
+        origin = ""
+
+    if destination == "0":
+        destination = ""
+
+    if not origin or not destination:
+
         return (
             "failed",
-            "Missing airport"
+            "Missing airport code"
         )
 
-    return "valid", ""
+    route = (
+        f"{origin}-"
+        f"{destination}"
+    )
+
+    distance = airport_distance.get(
+        route,
+        0
+    )
+
+    if distance <= 0:
+
+        return (
+            "suspicious",
+            "Invalid route or zero distance"
+        )
+
+    return (
+        "valid",
+        ""
+    )
