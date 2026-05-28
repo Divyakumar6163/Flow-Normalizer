@@ -1,0 +1,101 @@
+meter_id,facility_name,usage_kwh,billing_month,vendor
+UT1001,Regional Office,2506,2026-01,Tata Power
+UT1002,Plant B,4967,2026-01,Adani Electricity
+UT1003,Plant A,,2026-01,Torrent Power
+UT1004,Plant B,2128,2026-05,Adani Electricity
+UT1005,Regional Office,2778,2026-02,Torrent Power
+UT1006,Plant A,1773,2026-04,Adani Electricity
+UT1007,Plant B,,2026-01,BSES
+UT1008,Plant A,855,2026-03,BSES
+UT1009,Regional Office,-725,2026-05,Torrent Power
+UT1010,Plant A,3462,2026-05,BSES
+UT1011,Warehouse,,2026-01,Adani Electricity
+UT1012,Plant B,1327,2026-01,BSES
+UT1013,Head Office,3488,2026-04,BSES
+UT1014,Plant B,0,2026-03,BSES
+UT1015,Plant C,4875,2026-05,Tata Power
+UT1016,Regional Office,2711,2026-02,Adani Electricity
+UT1017,Regional Office,958,2026-03,Adani Electricity
+UT1018,Plant B,1042,2026-03,Tata Power
+UT1019,Plant B,3741,2026-02,BSES
+UT1020,Regional Office,0,2026-02,Torrent Power
+UT1021,Plant B,3771,2026-05,BSES
+UT1022,Plant C,1244,2026-02,Adani Electricity
+UT1023,Plant A,3958,2026-02,Tata Power
+UT1024,Warehouse,4334,2026-04,Tata Power
+UT1025,Warehouse,594,2026-05,BSES
+UT1026,Regional Office,3286,2026-05,Tata Power
+UT1027,Plant A,-1494,2026-04,BSES
+UT1028,Regional Office,4658,2026-05,BSES
+UT1029,Plant A,1752,2026-05,BSES
+UT1030,Plant C,4844,2026-05,Adani Electricity
+UT1031,Plant A,,2026-04,BSES
+UT1032,Plant C,,2026-02,BSES
+UT1033,Warehouse,1066,2026-01,Tata Power
+UT1034,Warehouse,1852,2026-02,Adani Electricity
+UT1035,Plant C,2147,2026-02,Torrent Power
+UT1036,Regional Office,3559,2026-04,BSES
+UT1037,Head Office,0,2026-01,Torrent Power
+UT1038,Plant A,2385,2026-01,BSES
+UT1039,Warehouse,,2026-01,Adani Electricity
+UT1040,Regional Office,,2026-02,Tata Power
+UT1041,Plant A,2781,2026-01,BSES
+UT1042,Regional Office,4372,2026-02,Torrent Power
+UT1043,Plant B,-1302,2026-04,Torrent Power
+UT1044,Regional Office,4325,2026-03,Torrent Power
+UT1045,Regional Office,,2026-01,Tata Power
+UT1046,Regional Office,0,2026-01,BSES
+UT1047,Plant B,2781,2026-02,Torrent Power
+UT1048,Head Office,1302,2026-01,Adani Electricity
+UT1049,Plant A,2436,2026-01,Tata Power
+UT1050,Plant B,3785,2026-04,Torrent Power
+UT1051,Plant A,,2026-04,Adani Electricity
+UT1052,Head Office,0,2026-04,BSES
+UT1053,Regional Office,-1055,2026-02,Torrent Power
+UT1054,Plant A,,2026-03,Tata Power
+UT1055,Warehouse,4850,2026-05,Torrent Power
+UT1056,Plant B,,2026-05,Tata Power
+UT1057,Plant B,,2026-05,Tata Power
+UT1058,Plant B,2516,2026-01,Torrent Power
+UT1059,Warehouse,,2026-05,Tata Power
+UT1060,Regional Office,0,2026-03,BSES
+UT1061,Regional Office,0,2026-02,BSES
+UT1062,Plant B,1094,2026-04,BSES
+UT1063,Plant A,1319,2026-05,Torrent Power
+UT1064,Plant A,0,2026-05,Adani Electricity
+UT1065,Plant C,1792,2026-02,Tata Power
+UT1066,Head Office,4833,2026-05,BSES
+UT1067,Plant A,1600,2026-01,BSES
+UT1068,Plant C,1773,2026-01,Tata Power
+UT1069,Plant C,0,2026-05,BSES
+UT1070,Plant C,2557,2026-03,Adani Electricity
+UT1071,Plant A,861,2026-04,Tata Power
+UT1072,Plant A,2645,2026-02,BSES
+UT1073,Plant B,579,2026-05,Torrent Power
+UT1074,Plant A,3524,2026-02,Tata Power
+UT1075,Warehouse,-869,2026-04,Adani Electricity
+UT1076,Plant C,0,2026-03,Tata Power
+UT1077,Plant B,3829,2026-03,Tata Power
+UT1078,Warehouse,1950,2026-02,Adani Electricity
+UT1079,Head Office,3221,2026-02,Tata Power
+UT1080,Head Office,-1279,2026-03,Adani Electricity
+UT1081,Head Office,0,2026-04,Tata Power
+UT1082,Head Office,2364,2026-03,BSES
+UT1083,Plant B,2782,2026-02,Tata Power
+UT1084,Plant A,3774,2026-03,BSES
+UT1085,Regional Office,-966,2026-01,BSES
+UT1086,Plant B,-611,2026-01,BSES
+UT1087,Plant C,4689,2026-04,BSES
+UT1088,Plant A,-1410,2026-05,Torrent Power
+UT1089,Regional Office,4910,2026-01,Torrent Power
+UT1090,Regional Office,3204,2026-03,Adani Electricity
+UT1091,Warehouse,2960,2026-01,BSES
+UT1092,Warehouse,2922,2026-04,BSES
+UT1093,Warehouse,3605,2026-02,Adani Electricity
+UT1094,Regional Office,3826,2026-05,Adani Electricity
+UT1095,Warehouse,0,2026-03,Tata Power
+UT1096,Head Office,2250,2026-04,BSES
+UT1097,Warehouse,2824,2026-02,Torrent Power
+UT1098,Warehouse,2424,2026-01,BSES
+UT1099,Regional Office,1707,2026-02,BSES
+UT1100,Plant A,1096,2026-02,Tata Power
